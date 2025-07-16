@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container py-5">
+  <h2 class="text-light mb-4">ყველა ციტატა</h2>
+
+  <div class="row row-cols-1 row-cols-md-2 g-4">
+    {% for quote in quotes %}
+    <div class="col">
+      <div class="card h-100">
+        <div class="card-body">
+          <blockquote class="blockquote mb-0">
+            <p>"{{ quote.text }}"</p>
+            <footer class="blockquote-footer">{{ quote.book_title }} — {{ quote.author }}</footer>
+          </blockquote>
+          <p class="text-muted mt-2">{{ quote.likes }} მოწონება</p>
+          <a href="{{ url_for('main.view_quote', quote_id=quote.id) }}" class="btn btn-sm btn-outline-secondary mt-2">ნახვა</a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

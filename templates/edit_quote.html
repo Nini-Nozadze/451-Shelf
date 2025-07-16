@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>ციტატის რედაქტირება</h2>
+<form method="post">
+    <textarea name="text">{{ quote.text }}</textarea><br>
+    <button type="submit">შენახვა</button>
+</form>
+{% endblock %}

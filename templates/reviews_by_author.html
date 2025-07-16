@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h2 class="text-light my-5 abtxtmid">{{ user.username }} - ყველა რეცენზია</h2>
+
+  {% if reviews %}
+    <ul>
+      {% for review in reviews %}
+        <li class="text-light abtxtmid">
+          <strong>{{ review.book.title  }}</strong><br>
+          {{ review.content[:100] }}...
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p class="text-light abtxtll">ამ მომხმარებელს ჯერ არ აქვს რევიუები.</p>
+  {% endif %}
+{% endblock %}

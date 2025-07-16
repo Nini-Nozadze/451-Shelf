@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4 text-light">
+    <h2>{{ book.title }}</h2>
+    <h5 class="text-muted">{{ book.author }}</h5>
+
+    <p><strong>ჟანრი:</strong> {{ book.genre }}</p>
+
+    {% if book.reviews %}
+        <h4 class="mt-4">მიმოხილვები:</h4>
+        <ul class="list-group">
+            {% for review in book.reviews %}
+                <li class="list-group-item">
+                    {{ review.text }}
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p class="text-muted">მიმოხილვები ჯერ არ არის.</p>
+    {% endif %}
+</div>
+{% endblock %}

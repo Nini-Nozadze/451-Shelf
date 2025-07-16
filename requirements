@@ -1,0 +1,10 @@
+flask
+flask-SQLAlchemy
+flask-Login
+flask-WTF
+Werkzeug
+Jinja2
+Pillow
+python-dotenv
+
+gunicorn

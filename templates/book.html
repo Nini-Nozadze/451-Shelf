@@ -1,0 +1,95 @@
+<!-- templates/book.html -->
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container my-5">
+    <div class="row">
+        <div class="col-md-4">
+            {% if reviews and reviews[0].image %}
+            <img src="{{ url_for('static', filename='uploads/' + reviews[0].image) }}" class="rounded"
+                 style="max-width: 250px; max-height: 350px; object-fit: cover;"
+                 alt="Review Image">
+            {% endif %}
+        </div>
+        <div class="col-md-8 text-light">
+            <h2>{{ book.title }}</h2>
+            <h5 class="text-light">ავტორი: {{ book.author }}</h5>
+            <p> ჯამში {{ reviews|length }} რევიუ</p>
+        </div>
+    </div>
+
+    <!--  რევიუები -->
+    <div class="mt-5 text-light ">
+        <h4> რევიუები</h4>
+        {% if reviews %}
+        <ul class="list-group">
+            {% for review in reviews %}
+            <li class="list-group-item">
+                <strong>{{ review.user.username }}</strong> —
+                <small class="text-light">{{ review.timestamp.strftime("%Y-%m-%d") }}</small>
+                <p class="mt-2">{{ review.content }}</p>
+            </li>
+            <form method="POST" action="{{ url_for('main.toggle_favorite_review', review_id=review.id) }}">
+                <button type="submit" class="btn btn-outline-danger btn-sm mt-1">
+                    {% if review in current_user.favorite_reviews %}
+                    წაშლა ფავორიტებიდან
+                    {% else %}
+                    დაამატე ფავორიტებში
+                    {% endif %}
+                </button>
+            </form>
+            {% if current_user.is_authenticated and (current_user.is_admin or current_user.id == review.user_id) %}
+           <form action="{{ url_for('main.delete_review', review_id=review.id) }}" method="post" style="display:inline;">
+                <button class="btn bg-danger text-light my-3" type="submit">წაშლა</button>
+            </form>
+            <a  class="text-warning" href="{{ url_for('main.edit_review', review_id=review.id) }}">შეცვლა</a>
+            {% endif %}
+
+            {% endfor %}
+        </ul>
+        {% else %}
+        <p class="text-muted">ჯერ არ არის რევიუები.</p>
+        {% endif %}
+    </div>
+
+    <!-- ციტატები -->
+    <div class="mt-5 text-light">
+        <h4>ციტატები</h4>
+        {% if quotes %}
+        <ul class="list-group">
+            {% for quote in quotes %}
+            <li class="list-group-item">
+                <blockquote class="blockquote">
+                    <p>"{{ quote.text }}"</p>
+                    <footer class="blockquote-footer">
+                        {{ quote.author }}
+                        <span class="text-light">({{ quote.likes }} like )</span>
+                    </footer>
+                </blockquote>
+            </li>
+            <form method="POST" action="{{ url_for('main.toggle_favorite_quote', quote_id=quote.id) }}">
+                <button type="submit" class="btn btn-outline-success btn-sm mt-1">
+                    {% if quote in current_user.favorite_quotes %}
+                    წაშლა ფავორიტებიდან
+                    {% else %}
+                    დაამატე ფავორიტებში
+                    {% endif %}
+
+                </button>
+            </form>
+            {% if current_user.is_authenticated and (current_user.is_admin or current_user.id == quote.user_id) %}
+            <form action="{{ url_for('main.delete_quote', quote_id=quote.id) }}" method="post" style="display:inline;">
+                <button type="submit" class="btn bg-danger text-light my-3">წაშლა</button>
+            </form>
+            <a href="{{ url_for('main.edit_quote', quote_id=quote.id) }}">შეცვლა</a>
+            {% endif %}
+
+            {% endfor %}
+        </ul>
+        {% else %}
+        <p class="text-light">ჯერ არ არის ციტატები.</p>
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}

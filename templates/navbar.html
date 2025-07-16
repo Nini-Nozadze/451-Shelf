@@ -1,0 +1,110 @@
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+
+        <!-- ლოგო და სახელწოდება -->
+        <a class="navbar-brand logname text-white" href="/">
+            <img src="/static/images/logo1.png" alt="Logo" width="40" class="mx-2 d-inline-block"> 451 SHELF
+        </a>
+
+        <!-- მობილური ღილაკი -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavContent"
+                aria-controls="navbarNavContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- collapsible კონტენტი -->
+        <div class="collapse navbar-collapse" id="navbarNavContent">
+
+            <!-- საძიებო ველი -->
+            <form action="{{ url_for('main.search') }}" method="GET" class="d-flex mx-auto my-2">
+                <input class="form-control me-2" type="search" name="q" placeholder="ძიება" aria-label="Search">
+                <button class="btn" type="submit">
+                    <img class="searchlogo" src="/static/images/book (1).png" alt="Search">
+                </button>
+            </form>
+
+            <!-- Login და Sign up -->
+            {% if current_user.is_authenticated %}
+
+            <a href="{{ url_for('blog.my_blog') }}" class="d-flex align-items-center text-decoration-none mx-2">
+                <img src="{{ url_for('static', filename='uploads/' + (current_user.image or 'default.png')) }}"
+                     alt="profile" width="40" height="40" class="rounded-circle me-2" style="object-fit: cover;">
+                <span class="text-light my-2">{{ current_user.username }}</span>
+            </a>
+
+            <a class="nav-link mx-2" href="{{ url_for('auth.logout') }}"><img class="logout"
+                                                                              src="/static/images/logout.png"
+                                                                              alt="Logout"></a>
+
+            {% else %}
+
+            <div class="d-flex px-1">
+                <a href="/login" class="btn">
+                    <img class="login" src="/static/images/login.png" alt="Login">
+                </a>
+                <a href="/signup" class="btn">
+                    <img class="signup" src="/static/images/signup.png" alt="signup">
+                </a>
+            </div>
+
+            {% endif %}
+
+
+        </div>
+    </div>
+</nav>
+<!-- Navbar დასრულებულია -->
+
+<!-- second navbar-->
+<nav class="navbar navbar1 navbar-expand-lg ">
+    <div class="container-fluid">
+        <a href="https://tbcbank.ge/ka/tbc-education" class="mx-2"><img class="tbclll"
+                                                                        src="/static/images/tbc-logo%20(2).png"> </a>
+
+        <!-- შუაში: გვერდების ბმულები -->
+        <div class="mx-auto">
+            <ul class="navbar-nav gap-3">
+                <li class="nav-item">
+                    <a class="nav-link navlinko text-white" href="{{ url_for('main.about') }}">ჩვენს შესახებ</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link navlinko text-white" href="/popular">პოპულარული</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link navlinko text-white" href="{{ url_for('main.top_critics') }}">ტოპ კრიტიკოსები</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link navlinko text-white" href="/quotes">ციტატები</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link navlinko text-white" href="{{ url_for('main.top_quoters') }}">ტოპ ციტატორები</a>
+                </li>
+                {% if current_user.is_authenticated %}
+                <li><a class="nav-link navlinko text-white" href="{{ url_for('blog.my_blog') }}">ჩემი ბლოგი</a></li>
+                {% endif %}
+            </ul>
+        </div>
+
+        <!-- მარჯვნივ: ფავორიტები -->
+        <div class="d-flex">
+            {% if current_user.is_authenticated %}
+            <a href="{{ url_for('main.favorites') }}" class="btn navlinko text-white">
+                <img src="{{ url_for('static', filename='images/book (2).png') }}" alt="favs" class="fav"> ფავორიტები
+            </a>
+            {% else %}
+            <a href="{{ url_for('auth.login') }}" class="btn navlinko text-white">
+                <img src="{{ url_for('static', filename='images/book (2).png') }}" alt="favs" class="fav"> ფავორიტები
+            </a>
+            {% endif %}
+
+        </div>
+    </div>
+</nav>
+<!--  end of the second navbar-->
+
+
+</div>
+</nav>
+
+<!--  end of the second navbar-->

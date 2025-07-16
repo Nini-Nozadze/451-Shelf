@@ -1,0 +1,60 @@
+{# templates/my_blog.html #}
+{% extends "base.html" %}
+{% block content %}
+<div class="container py-4">
+    <h2 class="text-light mb-4">ჩემი ბლოგი</h2>
+
+    <form method="POST" class="mb-4">
+        {{ form.hidden_tag() }}
+        <div class="mb-3">
+            {{ form.title.label(class="form-label text-light") }}
+            {{ form.title(class="form-control") }}
+        </div>
+        <div class="mb-3">
+            {{ form.content.label(class="form-label text-light") }}
+            {{ form.content(class="form-control", rows=4) }}
+        </div>
+        <div class="d-grid">
+            {{ form.submit(class="btn btn-primary") }}
+        </div>
+    </form>
+
+    <hr class="text-light">
+    <h4 class="text-light">Ჩემი პოსტები</h4>
+    {% for post in posts %}
+    <div class="card my-3">
+        <div class="card-body">
+            <h5 class="card-title">{{ post.title }}</h5>
+            <p class="card-text">{{ post.content }}</p>
+            <small class="text-muted">{{ post.timestamp.strftime('%Y-%m-%d %H:%M') }}</small>
+        </div>
+    </div>
+    {% else %}
+    <p class="text-light">ჯერ პოსტი არ გაქვს</p>
+    {% endfor %}
+</div>
+{% endblock %}
+
+{# templates/all_blogs.html #}
+{% extends "base.html" %}
+{% block content %}
+<div class="container py-4">
+    <h2 class="text-light mb-4">ყველა ბლოგი</h2>
+
+    {% for post in posts %}
+    <div class="card my-3">
+        <div class="card-body">
+            <h5 class="card-title">{{ post.title }}</h5>
+            <p class="card-text">{{ post.content }}</p>
+            <small class="text-muted">ავტორი: {{ post.user.username }} · {{ post.timestamp.strftime('%Y-%m-%d %H:%M')
+                }}</small>
+        </div>
+        <form method="POST" action="{{ url_for('upload.mark_favorite', review_id=review.id) }}">
+            <button type="submit" class="btn btn-outline-warning">⭐ ფავორიტი</button>
+        </form>
+    </div>
+    {% else %}
+    <p class="text-light">ჯერჯერობით არ არის ბლოგები.</p>
+    {% endfor %}
+</div>
+{% endblock %}

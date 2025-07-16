@@ -1,0 +1,245 @@
+@font-face {
+    font-family: mainf;
+    src: url(/static/images/fonts/GoudyBookletter1911-Regular.ttf);
+}
+
+@font-face {
+    font-family: bodyf;
+    src: url(/static/images/fonts/LibertinusMath-Regular.ttf);
+}
+
+@font-face {
+    font-family: geo1;
+    src: url(/static/images/fonts/DM-Mikhako-Tsereteli.ttf);
+}
+
+@font-face {
+    font-family: merabi;
+    src: url(/static/images/fonts/DM-Merabi_1.ttf);
+}
+
+@font-face {
+    font-family: eka;
+    src: url(/static/images/fonts/eka.ttf);
+}
+
+@font-face  {
+    font-family: ekako;
+    src: url(/static/images/fonts/geo_eka.ttf);
+}
+
+@font-face {
+    font-family: kali;
+    src: url(/static/images/fonts/calligraphy.ttf);
+}
+
+@font-face {
+    font-family: gio;
+    src: url(/static/images/fonts/dm-giorgi-khorguashvili.ttf);
+}
+
+.navbar {
+    background-color: #ff9100;
+}
+
+.navbar1 {
+    background-color: #ff9c1c;
+}
+
+.logname{
+    font-family: mainf;
+    font-weight: bold;
+    color: white;
+    font-size: 30px;
+}
+
+.srch{
+    width: 500px;
+    height: 50px;
+}
+
+.searchlogo{
+    width: 35px;
+
+}
+
+.login{
+    width: 45px;
+}
+
+.signup{
+    width: 45px;
+}
+
+.logout{
+    width: 45px;
+}
+
+.fav{
+    width: 35px;
+}
+
+
+.navlinko{
+    font-family: gio;
+
+}
+
+.tbclogo{
+    width: 60px;
+}
+
+.bookshelf{
+    width: 1200px;
+    height: 600px;
+}
+
+
+.bookshelf{
+    z-index: 1;
+    position: relative;
+}
+
+.textsh{
+    z-index: 3;
+    position: relative;
+    margin-top: -550px;
+}
+.mkmta{
+    font-family: geo1;
+    margin-top: 50px;
+    font-size: 50px;
+}
+.mkitxveli{
+    font-family: gio;
+    margin-top: 100px;
+    font-size: 39px;
+    width: 1000px;
+
+
+}
+
+.mkipa{
+    font-family: gio;
+    margin-top: 150px;
+    font-size: 39px;
+    word-spacing: 55px;
+
+}
+
+
+.fexiti{
+    display: inline-flex;
+    text-align: center;
+}
+
+.fexi{
+     background-color:  #ff9100;
+}
+
+.foottxt{
+    font-family: gio;
+}
+
+.lasttxt{
+    font-family: merabi;
+}
+
+
+.soctxt{
+    font-family: bodyf;
+}
+
+/* --- LOGIN PAGE STYLE --- */
+
+.logcont{
+
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.logcard{
+    background-image: url("/static/images/loginbg.png");
+    background-size: cover;
+    border-radius: 1.5rem;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    padding: 2.5rem;
+    width: 500px;
+}
+
+
+
+
+.btlg{
+    background-color: #ff9100;
+    border: none;
+    border-radius: 0.75rem;
+    padding: 0.75rem;
+    font-weight: 600;
+    transition: 0.3s ease;
+}
+
+
+
+.hedtxt{
+    font-family: merabi;
+    font-weight: 100;
+}
+
+.beztxt{
+    font-family: ekako;
+    font-weight: 100;
+}
+
+.labetxt{
+    font-family: bodyf;
+    font-weight: 100;
+    font-size: 25px;
+}
+
+
+.signupbg{
+     background-image: url("/static/images/signupbg.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    border-radius: 20px;
+
+}
+
+.sigup{
+    background-color: #FFA500;
+    width: 550px;
+    border-radius: 20px;
+    align-items: center;
+    margin: auto;
+    height: 60px;
+}
+
+.fifitxt{
+    font-family: merabi;
+
+}
+
+.tbclll{
+    width: 90px;
+    height: 30px;
+}
+
+.btxt{
+    font-family: bodyf;
+    }
+
+.abtxtll{
+    font-family: ekako;
+}
+
+.abtxtmid{
+    font-family: merabi;
+}
+
+.abtxtmain{
+    font-family: gio;
+}

@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>რეცენზიის რედაქტირება</h2>
+<form method="post">
+    <textarea name="content">{{ review.content }}</textarea><br>
+    ჟანრი: <input type="text" name="genre" value="{{ review.genre }}"><br>
+    <button type="submit">შენახვა</button>
+</form>
+{% endblock %}

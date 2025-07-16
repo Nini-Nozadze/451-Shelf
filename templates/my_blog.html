@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container py-4">
+    <h2 class="text-light mb-4">ჩემი ბლოგი</h2>
+
+    <!-- ბეიჯები და სტატისტიკა -->
+    <div class="mb-4">
+        {% if is_critic %}
+        <span class="badge bg-warning text-dark">კრიტიკოსი</span>
+        {% endif %}
+        <p class="text-light mt-2">რეცენზიები: {{ review_count }} | ციტატები: {{ quote_count }}</p>
+    </div>
+
+    <!-- დამატების ღილაკი -->
+    <div class="mb-4">
+        <a href="{{ url_for('upload.upload_choice') }}" class="btn btn-success">➕ დამატება</a>
+    </div>
+
+    <!-- რეცენზიები -->
+    <div class="mb-5">
+        <h4 class="text-light"> რეცენზიები</h4>
+        {% if reviews %}
+        <ul class="list-group">
+            {% for review in reviews %}
+            <li class="list-group-item">{{ review.content[:100] }}{% if review.content|length > 100 %}...{% endif %} -
+                <em>{{ review.genre }}</em></li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <p class="text-muted">ჯერ არ გაქვს ატვირთული რეცენზია.</p>
+        {% endif %}
+    </div>
+
+    <!-- ციტატები -->
+    <div>
+        <h4 class="text-light">ციტატები</h4>
+        {% if quotes %}
+        <ul class="list-group">
+            {% for quote in quotes %}
+            <li class="list-group-item">"{{ quote.text }}" - <strong>{{ quote.author }}</strong></li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <p class="text-muted">ჯერ არ გაქვს ატვირთული ციტატა.</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

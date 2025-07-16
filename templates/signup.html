@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container login-container my-5 p-2 signupbg">
+    <div class="login-card">
+        <div class="text-center ">
+
+            <h1 class="login-title hedtxt text-light my-3 ">რეგისტრაცია</h1>
+        </div>
+
+        <form method="POST" class="login-form my-2" enctype="multipart/form-data" novalidate>
+
+            {{ form.hidden_tag() }}
+
+            <div class="mb-3 my-1">
+                {{ form.username.label(class="form-label text-light labetxt") }}
+                {{ form.username(class="form-control fl", placeholder="მომხმარებელი") }}
+            </div>
+
+            <div class="mb-3 my-1">
+                {{ form.email.label(class="form-label text-light labetxt") }}
+                {{ form.email(class="form-control fl", placeholder="ელ. ფოსტა") }}
+            </div>
+
+            <div class="mb-3 my-1">
+                {{ form.password.label(class="form-label text-light labetxt") }}
+                {{ form.password(class="form-control fl ", placeholder="პაროლი") }}
+            </div>
+
+            <div class="mb-3 my-1">
+                {{ form.confirm_password.label(class="form-label text-light labetxt") }}
+                {{ form.confirm_password(class="form-control fl ", placeholder="გაიმეორე პაროლი") }}
+            </div>
+
+            <div class="mb-3">
+                {{ form.profile_picture.label(class="form-label text-light labetxt") }}
+                {{ form.profile_picture(class="form-control fl", accept="image/*") }}
+            </div>
+
+
+            <div class="d-grid mb-2 my-1 sigup ">
+                {{ form.submit(class="btn btn-login text-light labetxt sigup  ") }}
+            </div>
+
+            <div class="login-footer text-center my-1 ">
+                <small class="beztxt text-light">უკვე გაქვს ანგარიში?
+                    <a class="beztxt text-danger" href="{{ url_for('auth.login') }}">შესვლა</a>
+                </small>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container py-5">
+    <h2 class="text-light">{{ user.username }} - ყველა ციტატა</h2>
+
+    {% if quotes %}
+        <ul class="list-group mt-4">
+            {% for quote in quotes %}
+                <li class="list-group-item">
+                    "{{ quote.text }}"
+                    {% if quote.book_title %}
+                        <small class="text-muted d-block">წიგნი: {{ quote.book_title }}</small>
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p class="text-light mt-4">ციტატები ვერ მოიძებნა.</p>
+    {% endif %}
+</div>
+{% endblock %}

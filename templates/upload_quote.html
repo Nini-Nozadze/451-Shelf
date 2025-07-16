@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container py-5">
+    <h2 class="text-light mb-4">ციტატის ატვირთვა</h2>
+
+    <form method="POST">
+        {{ form.hidden_tag() }}
+
+        <div class="mb-3">
+            {{ form.quote_text.label(class="form-label text-light") }}
+            {{ form.quote_text(class="form-control", rows="4") }}
+        </div>
+
+        <div class="mb-3">
+            {{ form.book_title.label(class="form-label text-light") }}
+            {{ form.book_title(class="form-control") }}
+        </div>
+
+        <div class="d-grid">
+            {{ form.submit(class="btn btn-success") }}
+        </div>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4 text-light">
+    <h2 class="abtxtmid ">ძიების შედეგი: "{{ query }}"</h2>
+    {% if results %}
+        <ul class="list-group mt-3">
+            {% for book in results %}
+                <li class="list-group-item">
+                    <a href="{{ url_for('main.book_detail', book_id=book.id) }}">{{ book.title }}</a>
+                    <small class="text-muted"> — {{ book.author }}</small>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p class="text-muted mt-3">არაფერი მოიძებნა.</p>
+    {% endif %}
+</div>
+<br><br>
+{% endblock %}

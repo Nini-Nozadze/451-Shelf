@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">ციტატა</h5>
+      <p class="card-text">{{ quote.text }}</p>
+      <p class="card-subtitle text-muted">ავტორი: {{ quote.user.username }}</p>
+      <p class="card-subtitle text-muted">წიგნი: {{ quote.book_title }}</p>
+    </div>
+  </div>
+</div>
+{% endblock %}

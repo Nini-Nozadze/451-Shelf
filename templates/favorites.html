@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-4 text-light  my-5">
+  <h2 class="mb-4 my-5 abtxtmid">ფავორიტი რეცენზიები და ციტატები</h2>
+
+  {% if favorite_reviews %}
+    <h4 class="text-light">ფავორიტი რეცენზიები</h4>
+    <div class="row row-cols-1 row-cols-md-2 g-4 mb-4">
+      {% for review in favorite_reviews %}
+        <div class="col">
+          <div class="card h-100 shadow-sm border-0 rounded-4">
+            {% if review.image_path %}
+              <img src="{{ url_for('static', filename='uploads/' ~ review.image_path) }}" class="card-img-top rounded-top-4" alt="Review Image">
+            {% endif %}
+            <div class="card-body">
+              <h5 class="card-title">{{ review.book.title }} — {{ review.book.author }}</h5>
+              <p class="card-text">{{ review.content[:100] }}...</p>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+
+  {% if favorite_quotes %}
+    <h4 class="text-success">ფავორიტი ციტატები</h4>
+    <div class="row row-cols-1 row-cols-md-2 g-4">
+      {% for quote in favorite_quotes %}
+        <div class="col">
+          <div class="card h-100 shadow-sm border-0 rounded-4 bg-light">
+            <div class="card-body">
+              <blockquote class="blockquote mb-0">
+                <p>“{{ quote.text }}”</p>
+                <footer class="blockquote-footer mt-2">{{ quote.book_title }}</footer>
+              </blockquote>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+
+  {% if not favorite_reviews and not favorite_quotes %}
+    <p class="text-light ">ჯერ არ გაქვს მონიშნული ფავორიტი ციტატა ან რეცენზია.</p>
+  {% endif %}
+</div>
+<br>
+<br>
+<br>
+
+{% endblock %}

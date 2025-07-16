@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2 class="mt-4 mb-3 text-light fifitxt">ტოპ ციტატორები</h2>
+<ul class="list-group">
+  {% for user in quoters %}
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      <a href="{{ url_for('main.quotes_by_author', username=user.username) }}">{{ user.username }}</a>
+      <span class="badge badge-primary badge-pill">{{ user.quote_count }}</span>
+    </li>
+  {% endfor %}
+</ul>
+
+<br>
+<br>
+<br>
+
+{% endblock %}
